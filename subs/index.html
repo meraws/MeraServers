@@ -2,13 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MeraVPN | Подписки</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234f46e5'/%3E%3Cpath fill='%23ffffff' d='M35 40 L45 40 L40 30 Z'/%3E%3Cpath fill='%23ffffff' d='M65 40 L55 40 L60 30 Z'/%3E%3Ccircle cx='38' cy='48' r='3' fill='%23000'/%3E%3Ccircle cx='62' cy='48' r='3' fill='%23000'/%3E%3Cpath fill='%23ffffff' d='M45 60 Q50 70 55 60' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeraVPN → AskaVPN</title>
     <style>
         * {
             margin: 0;
@@ -17,528 +12,213 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #05070f;
+            background: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
-            color: #ffffff;
-            line-height: 1.5;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .flash {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.15), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: floatFlash 20s ease-in-out infinite;
-        }
-
-        .flash:nth-child(1) { top: 10%; left: -100px; width: 400px; height: 400px; }
-        .flash:nth-child(2) { top: 40%; right: -50px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%); animation-delay: 3s; }
-        .flash:nth-child(3) { bottom: 20%; left: 20%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent 70%); animation-delay: 7s; }
-        .flash:nth-child(4) { top: 60%; right: 30%; width: 280px; height: 280px; background: radial-gradient(circle, rgba(168, 85, 247, 0.1), transparent 70%); animation-delay: 2s; }
-        .flash:nth-child(5) { top: 80%; left: -50px; width: 450px; height: 450px; background: radial-gradient(circle, rgba(236, 72, 153, 0.08), transparent 70%); animation-delay: 5s; }
-        .flash:nth-child(6) { top: 20%; right: 40%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(79, 70, 229, 0.2), transparent 70%); animation-delay: 11s; }
-
-        @keyframes floatFlash {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            33% { transform: translate(50px, -30px) scale(1.1); opacity: 0.6; }
-            66% { transform: translate(-30px, 40px) scale(0.9); opacity: 0.4; }
-            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         .container {
-            position: relative;
-            z-index: 10;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .header-center {
+            max-width: 650px;
+            width: 100%;
             text-align: center;
-            margin-bottom: 2rem;
         }
 
-        .main-title {
+        /* Анимированные точки */
+        .dots-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            margin: 0 6px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.3s; }
+        .dot:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
             font-size: 5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff, #c4b5fd, #a78bfa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            text-align: center;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            color: #888888;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Карточка */
+        .card {
+            background: rgba(17, 17, 17, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Иконка стрелки */
+        .arrow-icon {
+            margin-bottom: 1.5rem;
+        }
+
+        .arrow-icon svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.6;
         }
 
         .description {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 1rem auto;
-        }
-
-        /* Блок предупреждения о Happ */
-        .happ-warning {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: rgba(245, 158, 11, 0.12);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            border-radius: 100px;
-            padding: 0.6rem 1.5rem;
-            margin: 0.5rem auto 1rem auto;
-            font-size: 0.85rem;
-            color: #fbbf24;
-        }
-        .happ-warning i {
+            color: #cccccc;
             font-size: 1rem;
-            color: #f59e0b;
+            line-height: 1.6;
+            margin-bottom: 2rem;
         }
 
-        /* Кнопка Telegram */
-        .telegram-btn {
+        .highlight {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Кнопка */
+        .btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
-            background: linear-gradient(135deg, #1da1f2, #0e8ad0);
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 100px;
+            gap: 10px;
+            background: transparent;
+            color: #ffffff;
+            padding: 14px 36px;
+            text-decoration: none;
             font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin: 0.5rem 0 1.5rem 0;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(29, 161, 242, 0.3);
-        }
-        .telegram-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(29, 161, 242, 0.4);
-            background: linear-gradient(135deg, #2b9ef0, #1a7bc0);
-        }
-
-        .subscriptions-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin: 1.5rem 0 3rem 0;
-            width: 100%;
-        }
-
-        .plan-card {
-            background: rgba(15, 20, 35, 0.5);
-            backdrop-filter: blur(16px);
-            border-radius: 2rem;
-            padding: 1.8rem;
-            width: 100%;
-            max-width: 360px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .plan-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(167, 139, 250, 0.6);
-            background: rgba(25, 30, 55, 0.6);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-header {
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.9rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #c4b5fd);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 0.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .card-title .emoji {
-            font-size: 1.8rem;
-            background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
-            color: #c4b5fd;
-        }
-
-        .card-desc {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-            line-height: 1.45;
-            border-left: 2px solid rgba(167, 139, 250, 0.5);
-            padding-left: 0.9rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .feature-list {
-            margin: 0.5rem 0 0.8rem 0;
-            flex-grow: 1;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            margin-bottom: 0.6rem;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.85rem;
-        }
-
-        .feature-item i {
-            font-size: 0.85rem;
-            width: 1.2rem;
-        }
-
-        .feature-item .fa-check-circle {
-            color: #22c55e;
-        }
-
-        .warning-item {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            margin-bottom: 0.6rem;
-            color: #fbbf24;
-            font-size: 0.85rem;
-            background: rgba(245, 158, 11, 0.1);
-            padding: 0.45rem 0.7rem;
-            border-radius: 1rem;
-        }
-
-        .warning-item i {
-            font-size: 0.85rem;
-            color: #f59e0b;
-        }
-
-        .add-button {
-            width: 100%;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            border: none;
-            padding: 0.85rem;
-            border-radius: 2rem;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            margin-top: 0.6rem;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-        }
-
-        .add-button:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
-        }
-
-        .back-nav {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(10, 15, 30, 0.5);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 100px;
-            padding: 0.6rem 1.3rem;
-            font-size: 0.9rem;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            margin-bottom: 1.2rem;
-        }
-        .back-nav:hover {
-            background: rgba(167, 139, 250, 0.2);
-            border-color: rgba(167, 139, 250, 0.5);
-            color: white;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+            border: 1.5px solid #ffffff;
+            border-radius: 40px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
         }
 
-        .notification {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #22c55e;
-            color: white;
-            padding: 0.6rem 1.3rem;
-            border-radius: 100px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 500;
-            z-index: 2000;
-            transition: transform 0.25s ease;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
-            backdrop-filter: blur(8px);
-            font-size: 0.85rem;
-        }
-        .notification.show {
-            transform: translateX(-50%) translateY(0);
+        .btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.02);
         }
 
-        @media (max-width: 768px) {
-            .main-title { font-size: 3.2rem; }
-            .description { font-size: 1rem; }
-            .subscriptions-grid { gap: 1.5rem; }
-            .plan-card { max-width: 100%; padding: 1.3rem; }
-            .card-title { font-size: 1.6rem; }
-            .card-title .emoji { font-size: 1.5rem; }
-            .telegram-btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
-            .happ-warning { padding: 0.5rem 1.2rem; font-size: 0.75rem; }
+        .btn svg {
+            transition: transform 0.3s ease;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
+        .btn:hover svg {
+            transform: translateX(4px);
         }
-        .fade-element { animation: fadeInUp 0.5s ease forwards; }
+
+        /* Подсказка */
+        .hint {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            color: #555555;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            margin-top: 3rem;
+            color: #333333;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 550px) {
+            h1 {
+                font-size: 3rem;
+                letter-spacing: 0.1em;
+            }
+            
+            .card {
+                padding: 1.8rem 1.5rem;
+            }
+            
+            .description {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="animated-bg">
-    <div class="flash"></div><div class="flash"></div><div class="flash"></div>
-    <div class="flash"></div><div class="flash"></div><div class="flash"></div>
-</div>
-
-<div class="container">
-    <!-- Кнопка "На главную" ведёт на https://MeraVPN.cc.cd -->
-    <div style="width: 100%; display: flex; justify-content: flex-start;">
-        <a href="https://MeraVPN.cc.cd" class="back-nav">
-            <i class="fas fa-arrow-left"></i> На главную
-        </a>
-    </div>
-
-    <div class="header-center fade-element" style="animation-delay: 0.05s;">
-        <div class="main-title">MeraVPN</div>
-        <div class="description">Выберите подходящую для вас подписку. Можно выбрать несколько.</div>
+    <div class="container">
+        <h1>...</h1>
         
-        <!-- Предупреждение: на вашей ОС должен быть установлен Happ -->
-        <div class="happ-warning">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span>Убедитесь, что у вас установлена последняя версия <strong>Happ.</strong></span>
+        <div class="dots-wrapper">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
-
-        <!-- Кнопка подписки на Telegram канал -->
-        <a href="https://t.me/MeraVPN" target="_blank" class="telegram-btn">
-            <i class="fab fa-telegram"></i> Подписаться на Telegram канал
-        </a>
+        
+        <div class="subtitle">Наш сайт переехал на другую ссылку.</div>
+        
+        <div class="card">
+            <div class="arrow-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4L12 20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            
+            <div class="description">
+                Мы переименовали <span class="highlight">MeraVPN</span> в <span class="highlight">AskaVPN</span><br>
+                и сменили домен.
+            </div>
+            
+            <a href="https://aska.lol" class="btn" target="_blank" rel="noopener noreferrer">
+                aska.lol
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            
+            <div class="hint">
+                нажмите для перехода
+            </div>
+        </div>
+        
+        <footer>
+            MeraVPN → AskaVPN
+        </footer>
     </div>
-
-    <div class="subscriptions-grid fade-element" style="animation-delay: 0.15s;">
-        <!-- Карточка Default ☘️ -->
-        <div class="plan-card">
-            <div class="card-header">
-                <div class="card-title">
-                    <span class="emoji">☘️</span> Default
-                </div>
-                <div class="card-desc">Обычная подписка, дающая вам стабильные, и подходящие сервера.</div>
-            </div>
-            <div class="feature-list">
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Белые списки</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Сервера под мобильный интернет</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Обход глушилок</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Быстрые сервера</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Черные списки</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Сервера для игр</span></div>
-            </div>
-            <button class="add-button" data-url="happ://crypt5/neirLcDLr32FxJ56fU80efnpFE0AkpIQe7/r4rdHhIYy+C9BT3PA74eRb5iCiZyDsHR8YPgEUqTO+M/C58MF2TKNWmqqkRpNmuFgzkTfdHSiZyVcOoivUMuKPjDIkZhoAansmjgTBVddpBghqyLHfq2hFcsUUslpKoctJLHBHvN9aoBy6bua7c/FryWIo3JTRUZAnZY3TzOJYpfQ1MIl99mt3WTEmNi2oW+2kteVjmdfMNyQtoJtZIjK63l4xaf09HMreKXT1iuGRpn/8WgbkfHOg2zuSNRqWhWnezRQCKlF8s6AVMOfoSvtRSjg+GFVnLitvCJhexG8LrsK5tbn+iL2BE9DMLWC2ZUmpy6L//BFKcvX7HV3YuNZ2hC8uIpDxoDxU1G22znlKDiDgRDz59IsVDDo6bshVKVWCpd/OoNV6w3Wz1c4MZsWZA17cm2LHfNRDLAv484An6ExK4UfDv8f8yvCyyr4r+idP83TAjWJTtJWbOD+kopiSiEMs1WQf+qo+ufnr39ZAXo3vCeBI8NpqH3WJYmL1teKR2QMnIgv/LTyoVOwdpocVh48F87wACd9zl7Om4jGhQhGB2G2WzmXRcxpqPl7z6jRffVNBifYkCPjq2mFNAc7o94oiBLJzLhdy+Y4Fg0vzLSv+IahQWrtnMYhhDoIZLsYX1HQgePgifmyljqDo47z3cbUBVtYqBmosflLE6ags0+nDoHpeCxn8ENVAlVzM7OdhBxwOj4RCGuF10YgdEvDGV82mvze9DXc31re5xyT=jYUvft">
-                <i class="fas fa-plus-circle"></i> Добавить
-            </button>
-        </div>
-
-        <!-- Карточка Flask 🧪 -->
-        <div class="plan-card">
-            <div class="card-header">
-                <div class="card-title">
-                    <span class="emoji">🧪</span> Flask
-                </div>
-                <div class="card-desc">Дополнительная подписка, дающая вам 100+ серверов. Если вдруг подписка выше каким-то образом умрёт – вы всегда можете положиться на Flask.</div>
-            </div>
-            <div class="feature-list">
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Белые списки</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Обход глушилок</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Быстрые сервера</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Черные списки</span></div>
-                <div class="warning-item"><i class="fas fa-exclamation-triangle"></i><span>Сервера могут неожиданно «умирать»</span></div>
-            </div>
-            <button class="add-button" data-url="happ://crypt5/neirksBNgLYFPMlptk88vtpuyq5qTCP2aib59QYCzRLffGPzwY89x/H0uYDNXRRRXjm5OvgWleJAUNaMx1XKz82dK2E5Q1p1ukk3H1PJ=vQ=v9EaJG6WVPxItnhEtLB/ejz+U6vubZo/8Jcw/jR/ms9RmapMZbj6/I8z4/LN7BgjvG91t9t7OjwpR9JV1ZavEos7omV0SU224rhrBTGSHgyFah3dvqJLEZw+ebh9meceaHixXToT0miAnBc1yHw54KGHMnIIkIBRjA370zHco9kADwGMrxeK/kwU0SvuHq+m8AsC6leA3oTGN3n8SSNCmyFGHfcclk3chQT7kDib9q5PNXZoSzMOLuo6DbmIjMzFufNzW6A0EwBq4YPzuOIAqyO/syijvGsPjjtfKoyKdX9omqSaVWwMRE+3P9hgXfamHM11FYPvUxucFflpZlfVTCq0WDgmY3vnSWtaD5mJBTAN87a1AGu0HQuGffMaqnafBx8HPTfFod7jwShBfw1gL50NiQfH89vdcWx4D9N+wcnNuAZBHYPXGe9CEWHy9AQr/C57U0uh4cg4n78tjuJPkeps9OalUAS8nmhe7NFjxNG1ORqwLgRRTbsFZrg7H4RLhqIJMKVJsjtFCNFg6mncmHtyfign/7xcR3ks2GIyvafiSh/BWGdhXDnqrRuX975AGa7unWzd7geR+b7FpDdIGb98MmuT6ya/v4R5QirlBCDFsUsXWHAA1YNavEeXwG1pM8XDl2rBMOdrI2ChDzxC+zm3iHNz1L8sbwJDrtFT=jSwvft">
-                <i class="fas fa-plus-circle"></i> Добавить
-            </button>
-        </div>
-
-        <!-- Новая карточка LTE -->
-        <div class="plan-card">
-            <div class="card-header">
-                <div class="card-title">
-                    <span class="emoji">📶</span> LTE
-                </div>
-                <div class="card-desc">Подписка специально заточенная под использование с мобильным интернетом.</div>
-            </div>
-            <div class="feature-list">
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Белые списки</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Обход глушилок</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Сервера под мобильный интернет</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Быстрые сервера</span></div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i><span>Черные списки</span></div>
-            </div>
-            <button class="add-button" data-url="happ://crypt5/neirnazxKTQdcuWJqD80QahyNqcFrg+YcxCC+382At2+jaMaUX1pXJj3Xk4/Yk+zjzD+DPyk4usGI+7otInt8OYF/RCdrAKS2PhLbYiR1gfnKcLMEJJVN7Jiyn0G+V3TjhLItDg3jdf0N7j9DmnmY/3VtmnKpS57ll0lNGqedcmrNaC+56zGhiI957rc0s30kfvO6Ch/K6O02eN1OxHDirXSoaWj4lhfcdh3BCBpsyolWvOiUETax7kKGyGQ5dT7RkXuRycNu/cOtscq4zeRW01utZK7QLBv2gM9UOlOuFTtaKChpAIQ9uJulMqVovzpJwYsxXCu1Lv0O5xIEOiyU19YS1Z6KJezsJTmy8E7Jt5Wm7dfH+Y7f78yoZp56bA4/QUqAkGZbWIBACt7swaiwLKz8+FkPEpgXaId22ariGZVkJC9CUTj51n7MP1yO6RR0QDXAZ00bA1btemA42UTe810zojllYwicD8yqbwRDjAbrUAQhUklgZKC5Wg0yzFSnbTThJGpY8zC1HM/HWlpcpoTaUWb/E9nv/DaPugizD7TJ7fCegnj3orj98yfBgT/D/kJ9wdS0/xnLhNBjNqCnikwS8q6gd32bmrk2Iuca+ihAnrO9gvaHgwQ9sEfnvWZJd+WuOsDYa7Qpk0vxMti1bOSnmougSDl9JV3u3bw1hmJLBQCCi9UI94xZ3NZgUMIJooWXC5W/MRDd/TpOE5y0y55XTuSk38OggEzKSOkpuT5iwR2vCAumZqQl4oh37Cd9RJWZy61mgah=jQIvft">
-                <i class="fas fa-plus-circle"></i> Добавить
-            </button>
-        </div>
-    </div>
-
-    <!-- Маленький дополнительный блок: преимущество (опционально, в стиле сайта) -->
-    <div class="extra-note fade-element" style="animation-delay: 0.3s; text-align: center; margin-top: 0.5rem;">
-        <p style="font-size: 0.7rem; color: rgba(255,255,255,0.4);">⚡ Лучший бесплатный VPN.</p>
-    </div>
-</div>
-
-<div id="notification" class="notification">
-    <i class="fas fa-check-circle"></i> <span>Подписка добавлена!</span>
-</div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Анимации для карточек
-        const cards = document.querySelectorAll('.plan-card');
-        cards.forEach((card, idx) => {
-            card.style.opacity = '0';
-            card.style.animation = `fadeInUp 0.45s ease forwards`;
-            card.style.animationDelay = `${0.2 + idx * 0.1}s`;
-            setTimeout(() => card.style.opacity = '1', 10);
-        });
-
-        // Уведомление (просто "Подписка добавлена!")
-        const notification = document.getElementById('notification');
-        let notifTimeout;
-
-        function showNotification() {
-            const spanElem = notification.querySelector('span');
-            if (spanElem) spanElem.textContent = 'Подписка добавлена!';
-            notification.classList.add('show');
-            if (notifTimeout) clearTimeout(notifTimeout);
-            notifTimeout = setTimeout(() => {
-                notification.classList.remove('show');
-            }, 1700);
-        }
-
-        // Обработка кнопок "Добавить"
-        const addBtns = document.querySelectorAll('.add-button');
-        addBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const url = this.getAttribute('data-url');
-                if (url) {
-                    window.location.href = url;
-                    showNotification();
-                } else {
-                    showNotification();
-                }
-            });
-        });
-    });
-</script>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .plan-card {
-        transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
-    }
-    .add-button:active {
-        transform: scale(0.97);
-    }
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #0a0f1e;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #4f46e5;
-        border-radius: 10px;
-    }
-    .feature-item i.fa-check-circle {
-        text-shadow: 0 0 3px #22c55e;
-    }
-    .telegram-btn {
-        text-decoration: none;
-    }
-    .back-nav {
-        text-decoration: none;
-    }
-    .extra-note {
-        margin-bottom: 1rem;
-    }
-    @media (max-width: 480px) {
-        .main-title {
-            font-size: 2.5rem;
-        }
-        .plan-card {
-            padding: 1.2rem;
-        }
-        .add-button {
-            padding: 0.7rem;
-            font-size: 0.85rem;
-        }
-        .card-title {
-            font-size: 1.4rem;
-        }
-        .card-title .emoji {
-            font-size: 1.3rem;
-        }
-        .telegram-btn {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.8rem;
-        }
-        .happ-warning {
-            padding: 0.4rem 1rem;
-            font-size: 0.7rem;
-        }
-        .feature-item, .warning-item {
-            font-si
+</body>
+</html>
