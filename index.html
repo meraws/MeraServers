@@ -2,14 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>MeraVPN | Бесплатный VPN</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234f46e5'/%3E%3Cpath fill='%23ffffff' d='M35 40 L45 40 L40 30 Z'/%3E%3Cpath fill='%23ffffff' d='M65 40 L55 40 L60 30 Z'/%3E%3Ccircle cx='38' cy='48' r='3' fill='%23000'/%3E%3Ccircle cx='62' cy='48' r='3' fill='%23000'/%3E%3Cpath fill='%23ffffff' d='M45 60 Q50 70 55 60' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeraVPN → AskaVPN</title>
     <style>
         * {
             margin: 0;
@@ -18,1557 +12,213 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #05070f;
+            background: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             min-height: 100vh;
-            color: #ffffff;
-            line-height: 1.5;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .flash {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.15), transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            animation: floatFlash 20s ease-in-out infinite;
-        }
-
-        .flash:nth-child(1) { top: 10%; left: -100px; animation-delay: 0s; width: 400px; height: 400px; }
-        .flash:nth-child(2) { top: 40%; right: -50px; animation-delay: 3s; width: 350px; height: 350px; background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%); }
-        .flash:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 7s; width: 500px; height: 500px; background: radial-gradient(circle, rgba(6, 182, 212, 0.08), transparent 70%); }
-        .flash:nth-child(4) { top: 60%; right: 30%; animation-delay: 2s; width: 280px; height: 280px; background: radial-gradient(circle, rgba(168, 85, 247, 0.1), transparent 70%); }
-        .flash:nth-child(5) { top: 80%; left: -50px; animation-delay: 5s; width: 450px; height: 450px; background: radial-gradient(circle, rgba(236, 72, 153, 0.08), transparent 70%); }
-        .flash:nth-child(6) { top: 20%; right: 40%; animation-delay: 11s; width: 200px; height: 200px; background: radial-gradient(circle, rgba(79, 70, 229, 0.2), transparent 70%); }
-
-        @keyframes floatFlash {
-            0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            33% { transform: translate(50px, -30px) scale(1.1); opacity: 0.6; }
-            66% { transform: translate(-30px, 40px) scale(0.9); opacity: 0.4; }
-            100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         .container {
-            position: relative;
-            z-index: 10;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(10, 15, 30, 0.5);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 100px;
-            padding: 0.7rem 1.5rem;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.7);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .nav-btn i { font-size: 1rem; }
-        .nav-btn:hover { background: rgba(167, 139, 250, 0.2); border-color: rgba(167, 139, 250, 0.5); color: white; }
-        .nav-btn.active { background: rgba(167, 139, 250, 0.25); border-color: rgba(167, 139, 250, 0.6); color: white; box-shadow: 0 0 15px rgba(167, 139, 250, 0.2); }
-
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-bottom: 4rem;
-        }
-
-        .main-title h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffffff, #c4b5fd, #a78bfa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin: 1rem 0 2rem 0;
-            max-width: 90%;
-        }
-
-        .button-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-        }
-
-        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4); background: linear-gradient(135deg, #6366f1, #8b5cf6); }
-
-        .about-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: rgba(20, 25, 45, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1rem 2rem;
-            border-radius: 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .about-button:hover { background: rgba(167, 139, 250, 0.3); border-color: rgba(167, 139, 250, 0.6); transform: translateY(-2px); }
-
-        .stats-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .stat {
-            text-align: center;
-            flex-shrink: 0;
-        }
-        .stat-number { font-size: 1.8rem; font-weight: 700; color: #a78bfa; }
-        .stat-label { font-size: 0.8rem; color: rgba(255, 255, 255, 0.5); }
-
-        .country-scroll {
-            background: rgba(10, 15, 30, 0.6);
-            backdrop-filter: blur(14px);
-            border-radius: 60px;
-            padding: 0.5rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 500px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        .scroll-track {
-            display: flex;
-            gap: 1rem;
-            animation: scrollCountries 24s linear infinite;
-            width: max-content;
-        }
-        .country-chip {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(0,0,0,0.3);
-            padding: 0.3rem 0.8rem;
-            border-radius: 40px;
-            backdrop-filter: blur(4px);
-            white-space: nowrap;
-        }
-        .country-chip .fi {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-        }
-        .country-chip span {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: white;
-        }
-
-        @keyframes scrollCountries {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .donation-card {
-            background: rgba(20, 25, 45, 0.4);
-            backdrop-filter: blur(16px);
-            border-radius: 2rem;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .donation-card:hover { transform: translateY(-5px); border-color: rgba(167, 139, 250, 0.5); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
-        .card-icon { font-size: 2.5rem; color: #a78bfa; margin-bottom: 1rem; }
-        .donation-card h3 { font-size: 1.8rem; margin-bottom: 0.75rem; font-weight: 700; }
-        .donation-desc { color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-bottom: 1rem; line-height: 1.5; }
-        .donation-features { text-align: left; margin: 1rem 0 1.5rem 0; }
-        .donation-features li { list-style: none; padding: 0.4rem 0; display: flex; align-items: center; gap: 0.6rem; color: rgba(255, 255, 255, 0.7); font-size: 0.85rem; }
-        .donation-features i { color: #22c55e; width: 1.2rem; font-size: 0.9rem; }
-
-        .donation-btn {
+            max-width: 650px;
             width: 100%;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-            border: none;
-            padding: 0.9rem;
-            border-radius: 2rem;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-        .donation-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3); }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin: 5rem 0;
+            text-align: center;
         }
 
-        .feature-card {
-            background: rgba(15, 20, 35, 0.3);
-            backdrop-filter: blur(10px);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
+        /* Анимированные точки */
+        .dots-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            margin: 0 6px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .dot:nth-child(1) { animation-delay: 0s; }
+        .dot:nth-child(2) { animation-delay: 0.3s; }
+        .dot:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            color: #888888;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Карточка */
+        .card {
+            background: rgba(17, 17, 17, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.3s ease;
         }
-        .feature-card:hover { transform: translateY(-5px); background: rgba(25, 30, 50, 0.4); border-color: rgba(167, 139, 250, 0.4); }
-        .feature-icon { font-size: 1.8rem; margin-bottom: 1rem; color: #a78bfa; }
-        .feature-card h4 { font-size: 1.2rem; margin-bottom: 0.75rem; font-weight: 600; }
-        .feature-card p { font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); line-height: 1.4; }
 
-        @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-content p { max-width: 100%; }
-            .stats-row { justify-content: center; }
-            .country-scroll { width: 400px; }
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .main-title h1 { font-size: 2.8rem; letter-spacing: 1px; }
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
-        @media (max-width: 600px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .main-title h1 { font-size: 2.2rem; letter-spacing: 0px; }
-            .country-scroll { width: 320px; }
+
+        /* Иконка стрелки */
+        .arrow-icon {
+            margin-bottom: 1.5rem;
         }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .arrow-icon svg {
+            width: 48px;
+            height: 48px;
+            opacity: 0.6;
+        }
+
+        .description {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Кнопка */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: #ffffff;
+            padding: 14px 36px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            transition: all 0.3s ease;
+            border: 1.5px solid #ffffff;
+            border-radius: 40px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.02);
+        }
+
+        .btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Подсказка */
+        .hint {
+            margin-top: 1.5rem;
+            font-size: 0.75rem;
+            color: #555555;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            margin-top: 3rem;
+            color: #333333;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 550px) {
+            h1 {
+                font-size: 3rem;
+                letter-spacing: 0.1em;
+            }
+            
+            .card {
+                padding: 1.8rem 1.5rem;
+            }
+            
+            .description {
+                font-size: 0.9rem;
+            }
+            
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
-
-<div class="animated-bg">
-    <div class="flash"></div><div class="flash"></div><div class="flash"></div>
-    <div class="flash"></div><div class="flash"></div><div class="flash"></div>
-</div>
-
-<div class="container">
-    <div class="navbar">
-        <a class="nav-btn active" id="homeNav"><i class="fas fa-home"></i> Главная</a>
-        <a class="nav-btn" id="telegramNav" href="https://t.me/MeraVPN" target="_blank"><i class="fab fa-telegram"></i> Telegram канал</a>
-        <a class="nav-btn" id="supportNav" href="https://t.me/MeraVPN?direct" target="_blank"><i class="fas fa-headset"></i> Поддержка</a>
-    </div>
-
-    <div class="hero">
-        <div class="hero-content">
-            <div class="main-title"><h1>MeraVPN</h1></div>
-            <p>Не ради денег – ради людей. Полная анонимность и неограниченная скорость в один клик.</p>
-            <div class="button-group">
-                <button class="cta-button" id="installBtn"><i class="fas fa-download"></i> Установить</button>
-                <button class="about-button" id="aboutCreatorBtn"><i class="fas fa-info-circle"></i> Всё о нас</button>
+    <div class="container">
+        <h1>...</h1>
+        
+        <div class="dots-wrapper">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        
+        <div class="subtitle">Наш сайт переехал на другую ссылку.</div>
+        
+        <div class="card">
+            <div class="arrow-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4L12 20M12 20L18 14M12 20L6 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </div>
-            <div class="stats-row">
-                <div class="stat"><div class="stat-number">167+</div><div class="stat-label">Активных пользователей</div></div>
-                <div class="stat"><div class="stat-number">88.8%</div><div class="stat-label">Качество работы</div></div>
-                <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Поддержка</div></div>
-                <div class="country-scroll">
-                    <div class="scroll-track" id="scrollTrack"></div>
-                </div>
+            
+            <div class="description">
+                Мы переименовали <span class="highlight">MeraVPN</span> в <span class="highlight">AskaVPN</span><br>
+                и сменили домен.
+            </div>
+            
+            <a href="https://aska.lol" class="btn" target="_blank" rel="noopener noreferrer">
+                aska.lol
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            
+            <div class="hint">
+                нажмите для перехода
             </div>
         </div>
-        <div class="donation-card">
-            <div class="card-icon"><i class="fas fa-hand-holding-heart"></i></div>
-            <h3>Пожертвование</h3>
-            <div class="donation-desc">Мы не продаём ваши данные, как это делают бесплатные аналоги. Поэтому в главном меню предоставляем возможность пожертвования.<br>Вы сможете помочь нам финансово следующими способами:</div>
-            <ul class="donation-features">
-                <li><i class="fas fa-check-circle"></i> Криптовалюта: TON, USDT(TON), USDT(TRC20) и другие.</li>
-                <li><i class="fas fa-check-circle"></i> Telegram звёзды</li>
-            </ul>
-            <button class="donation-btn" id="donateMainBtn"><i class="fas fa-coins"></i> Выбрать тип пожертвования</button>
-        </div>
+        
+        <footer>
+            MeraVPN → AskaVPN
+        </footer>
     </div>
-
-    <div class="features-grid">
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-lock"></i></div><h4>Конфиденциальность</h4><p>Мы не собираем ни гроша ваших данных. Только общая статистика о количестве пользователей.</p></div>
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div><h4>Молниеносная скорость</h4><p>Наши сервера каждые 10 минут проверяются на работоспособность.</p></div>
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-globe-americas"></i></div><h4>Глобальное покрытие</h4><p>15+ стран, 100+ серверов по всему миру.</p></div>
-        <div class="feature-card"><div class="feature-icon"><i class="fas fa-mobile-alt"></i></div><h4>Кроссплатформенность</h4><p>Поддержка Windows, macOS, iPhone, Android, Linux и другие.</p></div>
-    </div>
-</div>
-
-<div id="notification" class="notification"><i class="fas fa-check-circle"></i> Скопировано!</div>
-
-
-
-
-
-
-
-<!-- ========== ЧАСТЬ 2: МОДАЛЬНЫЕ ОКНА ========== -->
-
-<style>
-    /* Дополнительные стили для модальных окон */
-    .modal-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.85);
-        backdrop-filter: blur(12px);
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-    }
-    .modal-overlay.active {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .modal {
-        background: rgba(15, 20, 35, 0.96);
-        backdrop-filter: blur(24px);
-        border-radius: 2rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 2rem;
-        width: 90%;
-        max-width: 480px;
-        transform: scale(0.95);
-        transition: transform 0.3s ease;
-    }
-    .modal-overlay.active .modal {
-        transform: scale(1);
-    }
-
-    .support-header {
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
-    .exclamation-icon {
-        font-size: 2.5rem;
-        color: #f59e0b;
-        margin-bottom: 0.5rem;
-    }
-    .support-header h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #ffffff, #c4b5fd, #a78bfa);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    .support-desc {
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.9rem;
-        text-align: center;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-    }
-    .support-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    .support-action-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 1rem;
-        padding: 0.9rem;
-        color: white;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-size: 1rem;
-    }
-    .support-action-btn i {
-        font-size: 1.3rem;
-    }
-    .support-action-btn:hover {
-        background: rgba(167, 139, 250, 0.2);
-        border-color: rgba(167, 139, 250, 0.5);
-        transform: translateY(-2px);
-    }
-
-    .support-skip-btn {
-        display: block;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 2rem;
-        padding: 0.9rem;
-        color: rgba(255, 255, 255, 0.5);
-        font-weight: 600;
-        text-align: center;
-        cursor: not-allowed;
-        transition: all 0.2s;
-        font-size: 0.95rem;
-    }
-    .support-skip-btn.active {
-        background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        border-color: rgba(167, 139, 250, 0.6);
-        color: white;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-    }
-    .support-skip-btn.active:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-    }
-
-    .device-header {
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
-    .device-header h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #ffffff, #c4b5fd, #a78bfa);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    .device-header p {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 0.9rem;
-        margin-top: 0.5rem;
-    }
-    .device-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    .device-btn {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 1rem;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-        transition: all 0.2s;
-        color: white;
-        font-weight: 500;
-    }
-    .device-btn i {
-        font-size: 2rem;
-        color: #a78bfa;
-    }
-    .device-btn:hover:not(.disabled) {
-        background: rgba(167, 139, 250, 0.2);
-        border-color: rgba(167, 139, 250, 0.5);
-        transform: translateY(-2px);
-    }
-    .device-btn.disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        filter: grayscale(0.3);
-    }
-    .device-btn.disabled:hover {
-        transform: none;
-        background: rgba(255, 255, 255, 0.08);
-    }
-
-    .donate-select-header {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-    .donate-select-header i {
-        font-size: 2.5rem;
-        color: #a78bfa;
-        margin-bottom: 0.5rem;
-    }
-    .donate-select-header h2 {
-        font-size: 1.6rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #ffffff, #c4b5fd, #a78bfa);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-    .donate-select-desc {
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.85rem;
-        text-align: center;
-        margin-bottom: 1.5rem;
-        line-height: 1.5;
-    }
-    .section-title {
-        text-align: center;
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.85rem;
-        font-weight: 600;
-        margin: 1rem 0 0.8rem 0;
-        letter-spacing: 1px;
-    }
-    .donate-type-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
-        margin-bottom: 0.5rem;
-    }
-    .donate-type-btn {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-radius: 1rem;
-        padding: 0.8rem 0.5rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.2s;
-        color: white;
-        font-weight: 500;
-        font-size: 0.9rem;
-    }
-    .donate-type-btn:hover {
-        background: rgba(167, 139, 250, 0.3);
-        border-color: #a78bfa;
-    }
-
-    .address-box {
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 1rem;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.8rem;
-        margin: 1rem 0;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .address-text {
-        font-family: monospace;
-        font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.9);
-        word-break: break-all;
-        flex: 1;
-    }
-    .copy-circle {
-        width: 38px;
-        height: 38px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    .copy-circle:hover {
-        background: rgba(167, 139, 250, 0.4);
-        border-color: #a78bfa;
-        transform: scale(1.05);
-    }
-    .copy-circle i {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.8);
-    }
-
-    .back-btn {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 2rem;
-        padding: 0.9rem;
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-size: 0.95rem;
-        text-align: center;
-    }
-    .back-btn:hover {
-        background: rgba(255, 255, 255, 0.12);
-        color: white;
-    }
-
-    /* ФИОЛЕТОВЫЕ КНОПКИ ДЛЯ ВСЕХ ДЕЙСТВИЙ */
-    .action-btn, .donation-btn {
-        width: 100%;
-        background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        border: none;
-        padding: 0.9rem;
-        border-radius: 2rem;
-        color: white;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 0.9rem;
-        text-align: center;
-    }
-    .action-btn:hover, .donation-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    }
-    
-    /* Вторичные фиолетовые кнопки (чуть светлее фон) */
-    .action-btn.secondary, .donation-btn.secondary {
-        background: rgba(167, 139, 250, 0.25);
-        border: 1px solid rgba(167, 139, 250, 0.5);
-    }
-    .action-btn.secondary:hover, .donation-btn.secondary:hover {
-        background: rgba(167, 139, 250, 0.4);
-    }
-
-    .notification {
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%) translateY(-100px);
-        background: #22c55e;
-        color: white;
-        padding: 0.8rem 1.5rem;
-        border-radius: 100px;
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        font-weight: 500;
-        z-index: 2000;
-        transition: transform 0.3s ease;
-        box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
-    }
-    .notification.show {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    @media (max-width: 600px) {
-        .device-grid {
-            grid-template-columns: 1fr;
-        }
-        .donate-type-grid {
-            grid-template-columns: 1fr;
-        }
-        .modal {
-            padding: 1.5rem;
-        }
-    }
-</style>
-
-<!-- 1. Модальное окно поддержки с таймером -->
-<div class="modal-overlay" id="supportModal">
-    <div class="modal">
-        <div class="support-header">
-            <div class="exclamation-icon"><i class="fas fa-exclamation-triangle"></i></div>
-            <h2>Постой!</h2>
-        </div>
-        <div class="support-desc">Перед тем как установить наш VPN, вы можете помочь нам в его развитии следующими способами:</div>
-        <div class="support-buttons">
-            <button class="support-action-btn" id="telegramSupportBtn"><i class="fab fa-telegram"></i> Подписаться на наш Telegram канал</button>
-            <button class="support-action-btn" id="donateSupportBtn"><i class="fas fa-heart"></i> Пожертвование</button>
-        </div>
-        <button class="support-skip-btn" id="skipBtn">Продолжить установку <span id="timer">8</span></button>
-    </div>
-</div>
-
-<!-- 2. Выбор устройства (серые - недоступные) -->
-<div class="modal-overlay" id="deviceModal">
-    <div class="modal">
-        <div class="device-header">
-            <h2>Выберите устройство</h2>
-            <p>Чем вы сейчас пользуетесь?</p>
-        </div>
-        <div class="device-grid">
-            <div class="device-btn" data-device="windows"><i class="fab fa-windows"></i><span>Windows</span></div>
-            <div class="device-btn" data-device="macos"><i class="fab fa-apple"></i><span>macOS</span></div>
-            <div class="device-btn" data-device="iphone"><i class="fab fa-apple"></i><span>iPhone</span></div>
-            <div class="device-btn" data-device="android"><i class="fab fa-android"></i><span>Android</span></div>
-            <div class="device-btn disabled" data-device="linux"><i class="fab fa-linux"></i><span>Linux</span></div>
-            <div class="device-btn disabled" data-device="bsd"><i class="fab fa-freebsd"></i><span>BSD</span></div>
-            <div class="device-btn disabled" data-device="androidtv"><i class="fas fa-tv"></i><span>Android TV</span></div>
-            <div class="device-btn disabled" data-device="appletv"><i class="fab fa-apple"></i><span>Apple TV</span></div>
-        </div>
-        <button class="back-btn" id="modalBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 3. Windows — установка программы -->
-<div class="modal-overlay" id="windowsInstallModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fab fa-windows"></i>
-            <h2>Установите программу</h2>
-        </div>
-        <div class="donate-select-desc" style="color: rgba(255,255,255,0.9);">Чтобы использовать VPN установите прокси-клиент Happ.</div>
-        <button class="donation-btn" id="windowsDownloadBtn" style="margin-bottom: 0.8rem;"><i class="fas fa-download"></i> Установить</button>
-        <button class="donation-btn" id="windowsNextBtn" style="margin-bottom: 0.8rem;">Дальше</button>
-        <button class="back-btn" id="windowsBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 4. Windows — ключ -->
-<div class="modal-overlay" id="windowsKeyModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-key"></i>
-            <h2>Завершите установку</h2>
-        </div>
-        <div class="donate-select-desc">После завершения установки программы запустите её, и вставьте ключ-ссылку в появившееся окно.</div>
-        <div class="address-box">
-            <div class="address-text" id="windowsKeyText">https://MeraVPN.cc.cd/sub</div>
-            <div class="copy-circle" id="copyWindowsKey"><i class="far fa-copy"></i></div>
-        </div>
-        <button class="donation-btn" id="windowsFinishBtn" style="margin-bottom: 0.8rem;">Завершить</button>
-        <button class="back-btn" id="windowsKeyBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 5. macOS — вопрос о России -->
-<div class="modal-overlay" id="macosRegionModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
-            <h2>Вы в России?</h2>
-        </div>
-        <div class="donate-select-desc">Нажимайте «Да» только в том случае, если у вас на устройстве установлен регион Россия.</div>
-        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-            <button class="donation-btn" id="macosYesBtn" style="flex: 1;">Да</button>
-            <button class="donation-btn" id="macosNoBtn" style="flex: 1;">Нет</button>
-        </div>
-        <button class="back-btn" id="macosRegionBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 6. macOS — установка -->
-<div class="modal-overlay" id="macosInstallModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fab fa-apple"></i>
-            <h2>Установите программу</h2>
-        </div>
-        <div class="donate-select-desc" style="color: rgba(255,255,255,0.9);">Чтобы использовать VPN установите прокси-клиент Happ.</div>
-        <button class="donation-btn" id="macosDownloadBtn" style="margin-bottom: 0.8rem;"><i class="fas fa-download"></i> Установить</button>
-        <button class="donation-btn" id="macosNextBtn" style="margin-bottom: 0.8rem;">Дальше</button>
-        <button class="back-btn" id="macosInstallBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 7. macOS — ключ -->
-<div class="modal-overlay" id="macosKeyModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-key"></i>
-            <h2>Завершите установку</h2>
-        </div>
-        <div class="donate-select-desc">После завершения установки программы запустите её, и вставьте ключ-ссылку в появившееся окно.</div>
-        <div class="address-box">
-            <div class="address-text" id="macosKeyText">https://MeraVPN.cc.cd/sub</div>
-            <div class="copy-circle" id="copyMacosKey"><i class="far fa-copy"></i></div>
-        </div>
-        <button class="donation-btn" id="macosFinishBtn" style="margin-bottom: 0.8rem;">Завершить</button>
-        <button class="back-btn" id="macosKeyBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 8. iPhone — вопрос о России -->
-<div class="modal-overlay" id="iphoneRegionModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
-            <h2>Вы в России?</h2>
-        </div>
-        <div class="donate-select-desc">Нажимайте «Да» только в том случае, если у вас на устройстве установлен регион Россия.</div>
-        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-            <button class="donation-btn" id="iphoneYesBtn" style="flex: 1;">Да</button>
-            <button class="donation-btn" id="iphoneNoBtn" style="flex: 1;">Нет</button>
-        </div>
-        <button class="back-btn" id="iphoneRegionBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 9. iPhone — установка приложения -->
-<div class="modal-overlay" id="iphoneInstallModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fab fa-apple"></i>
-            <h2>Установите приложение</h2>
-        </div>
-        <div class="donate-select-desc" style="color: rgba(255,255,255,0.9);">Чтобы использовать VPN установите прокси-клиент Happ.</div>
-        <button class="donation-btn" id="iphoneDownloadBtn" style="margin-bottom: 0.8rem;"><i class="fas fa-download"></i> Установить</button>
-        <button class="donation-btn" id="iphoneNextBtn" style="margin-bottom: 0.8rem;">Дальше</button>
-        <button class="back-btn" id="iphoneInstallBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 10. iPhone — инструкция с ключом -->
-<div class="modal-overlay" id="iphoneKeyModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-mobile-alt"></i>
-            <h2>Завершите установку</h2>
-        </div>
-        <div class="donate-select-desc" style="color: rgba(255,255,255,0.9); text-align: left;">1. Скопируйте ключ-ссылку ниже<br>2. Зайдите в приложение<br>3. Нажмите на 3 точки, нажмите Import from clipboard (или импортировать с буфера обмена)</div>
-        <div class="address-box">
-            <div class="address-text" id="iphoneKeyText">https://MeraVPN.cc.cd/sub</div>
-            <div class="copy-circle" id="copyIphoneKey"><i class="far fa-copy"></i></div>
-        </div>
-        <button class="donation-btn" id="iphoneFinishBtn" style="margin-bottom: 0.8rem;">Завершить</button>
-        <button class="back-btn" id="iphoneKeyBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 11. Android — установка приложения -->
-<div class="modal-overlay" id="androidInstallModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fab fa-android"></i>
-            <h2>Установите приложение</h2>
-        </div>
-        <div class="donate-select-desc" style="color: rgba(255,255,255,0.9);">Чтобы использовать VPN установите прокси-клиент Happ.<br><strong>Выберите через что установить Happ:</strong></div>
-        <button class="donation-btn" id="androidPlayBtn" style="margin-bottom: 0.8rem;"><i class="fab fa-google-play"></i> Установить из Google Play</button>
-        <button class="donation-btn" id="androidGitBtn" style="margin-bottom: 0.8rem;">Установить из GitHub</button>
-        <button class="donation-btn" id="androidNextBtn" style="margin-bottom: 0.8rem;">Дальше</button>
-        <button class="back-btn" id="androidBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 12. Android — ключ -->
-<div class="modal-overlay" id="androidKeyModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-key"></i>
-            <h2>Завершите установку</h2>
-        </div>
-        <div class="donate-select-desc" style="color: rgba(255,255,255,0.9); text-align: left;">1. Скопируйте ключ-ссылку ниже<br>2. Зайдите в приложение<br>3. Нажмите на 3 точки, нажмите Import from clipboard (или импортировать с буфера обмена)</div>
-        <div class="address-box">
-            <div class="address-text" id="androidKeyText">https://MeraVPN.cc.cd/sub</div>
-            <div class="copy-circle" id="copyAndroidKey"><i class="far fa-copy"></i></div>
-        </div>
-        <button class="donation-btn" id="androidFinishBtn" style="margin-bottom: 0.8rem;">Завершить</button>
-        <button class="back-btn" id="androidKeyBackBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 13. Поздравление -->
-<div class="modal-overlay" id="congratsModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-party-horn" style="color: #fbbf24;"></i>
-            <h2>Поздравляем!</h2>
-        </div>
-        <div class="donate-select-desc">Вы успешно установили MeraVPN!</div>
-        <button class="donation-btn" id="congratsTelegramBtn" style="margin-bottom: 0.8rem;"><i class="fab fa-telegram"></i> Подписаться на наш Telegram канал</button>
-        <button class="donation-btn" id="congratsDonateBtn" style="margin-bottom: 0.8rem;"><i class="fas fa-heart"></i> Пожертвование</button>
-        <button class="back-btn" id="congratsCloseBtn">Назад</button>
-    </div>
-</div>
-
-<!-- 14. Всё о нас -->
-<div class="modal-overlay" id="aboutModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-user-astronaut"></i>
-            <h2>Страница создателя</h2>
-        </div>
-        <div class="donate-select-desc">На странице создателя можно найти всё: начиная от этого проекта и заканчивая информацией о других ресурсах.</div>
-        <button class="donation-btn" id="goToCreatorBtn" style="margin-bottom: 0.8rem;">Перейти <i class="fas fa-external-link-alt"></i></button>
-        <button class="back-btn" id="aboutCloseBtn">Закрыть</button>
-    </div>
-</div>
-
-<!-- 15. Выбор пожертвования -->
-<div class="modal-overlay" id="donateSelectModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-hand-holding-heart"></i>
-            <h2>Выберите тип пожертвования</h2>
-        </div>
-        <div class="donate-select-desc">Пожертвованные вами деньги пойдут на улучшение продукта, а также на личные хотелки создателя MeraVPN.</div>
-        <div class="section-title">Криптовалюта</div>
-        <div class="donate-type-grid">
-            <button class="donate-type-btn" data-type="ton">TON</button>
-            <button class="donate-type-btn" data-type="cryptobot">CryptoBot</button>
-            <button class="donate-type-btn" data-type="usdt_trc20">USDT (TRC20)</button>
-            <button class="donate-type-btn" data-type="usdt_ton">USDT (TON)</button>
-        </div>
-        <div class="section-title">Другое</div>
-        <div style="display: flex; justify-content: center;">
-            <button class="donate-type-btn" data-type="stars" style="width: auto; min-width: 160px;">Telegram звёзды</button>
-        </div>
-        <button class="back-btn" id="donateSelectBackBtn" style="margin-top: 1.5rem;">Назад</button>
-    </div>
-</div>
-
-<!-- 16. Адрес кошелька -->
-<div class="modal-overlay" id="addressModal">
-    <div class="modal">
-        <div class="donate-select-header">
-            <i class="fas fa-link"></i>
-            <h2>Адрес криптокошелька</h2>
-        </div>
-        <div class="address-box">
-            <div class="address-text" id="addressText"></div>
-            <div class="copy-circle" id="copyAddressBtn"><i class="far fa-copy"></i></div>
-        </div>
-        <button class="back-btn" id="addressBackBtn">Назад</button>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-<!-- ========== ЧАСТЬ 3: ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ========== -->
-<style>
-    /* Стили для кнопок действий */
-    .action-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        margin-top: 0.5rem;
-    }
-    
-    .action-btn {
-        width: 100%;
-        background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        border: none;
-        padding: 0.9rem;
-        border-radius: 2rem;
-        color: white;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 0.95rem;
-        text-align: center;
-    }
-    
-    .action-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    }
-    
-    .action-btn.secondary {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    
-    .action-btn.secondary:hover {
-        background: rgba(167, 139, 250, 0.3);
-        border-color: #a78bfa;
-        transform: translateY(-2px);
-    }
-    
-    /* Кнопка "Назад" единый стиль */
-    .back-button {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 2rem;
-        padding: 0.9rem;
-        color: rgba(255, 255, 255, 0.85);
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-size: 0.95rem;
-        text-align: center;
-        margin-top: 0.5rem;
-    }
-    
-    .back-button:hover {
-        background: rgba(255, 255, 255, 0.12);
-        color: white;
-    }
-    
-    /* Контейнер для кнопок в модальных окнах */
-    .modal-buttons-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0.8rem;
-        margin-top: 1rem;
-    }
-    
-    /* Кнопка "Продолжить установку" (неактивная) */
-    .skip-btn-inactive {
-        display: block;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 2rem;
-        padding: 0.9rem;
-        color: rgba(255, 255, 255, 0.4);
-        font-weight: 600;
-        text-align: center;
-        cursor: not-allowed;
-        transition: all 0.2s;
-        font-size: 0.95rem;
-    }
-    
-    /* Кнопка "Продолжить установку" (активная) */
-    .skip-btn-active {
-        display: block;
-        width: 100%;
-        background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        border: none;
-        border-radius: 2rem;
-        padding: 0.9rem;
-        color: white;
-        font-weight: 600;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 0.95rem;
-        box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
-    }
-    
-    .skip-btn-active:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    }
-    
-    /* Ряд кнопок (Да/Нет) */
-    .row-buttons {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-    
-    .row-buttons button {
-        flex: 1;
-    }
-    
-    /* Центрирование одиночной кнопки в разделе "Другое" */
-    .single-button-center {
-        display: flex;
-        justify-content: center;
-    }
-    
-    .single-button-center button {
-        width: auto;
-        min-width: 160px;
-    }
-    
-    /* Контейнер для адреса с копированием */
-    .address-container {
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 1rem;
-        padding: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.8rem;
-        margin: 1rem 0;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .address-text {
-        font-family: monospace;
-        font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.9);
-        word-break: break-all;
-        flex: 1;
-    }
-    
-    .copy-button {
-        width: 38px;
-        height: 38px;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    
-    .copy-button:hover {
-        background: rgba(167, 139, 250, 0.4);
-        border-color: #a78bfa;
-        transform: scale(1.05);
-    }
-    
-    .copy-button i {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.8);
-    }
-    
-    /* Иконка салюта в окне поздравления */
-    .firework-icon {
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-        animation: pulse 0.5s ease-in-out infinite alternate;
-    }
-    
-    @keyframes pulse {
-        from { transform: scale(1); opacity: 0.7; }
-        to { transform: scale(1.1); opacity: 1; }
-    }
-    
-    /* Canvas для салюта (поверх модального окна) */
-    #confetti-canvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 1001;
-    }
-</style>
-
-<!-- Canvas для салюта -->
-<canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1001;"></canvas>
-
-<!-- Подключение библиотеки canvas-confetti -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-
-
-
-
-
-
-
-
-<!-- ========== ЧАСТЬ 4: СКРИПТЫ ========== -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // ---------- АДРЕСА КРИПТОКОШЕЛЬКОВ ----------
-        const addresses = { 
-            ton: "UQDDGweXR9xb7GQuFTvVioF_YSpxn9iHCH9s7aMeijq5SXMu", 
-            usdt_trc20: "TVMa3yvxBoAY5mR8MaioktSuJQNNtQC17t", 
-            usdt_ton: "UQDDGweXR9xb7GQuFTvVioF_YSpxn9iHCH9s7aMeijq5SXMu" 
-        };
-
-        // ---------- ФЛАГИ СТРАН (РАБОТАЮТ В РОССИИ) ----------
-        const countryList = [
-            { name: "США", code: "us" }, { name: "Нидерланды", code: "nl" }, { name: "Россия", code: "ru" },
-            { name: "Германия", code: "de" }, { name: "Финляндия", code: "fi" }, { name: "Швейцария", code: "ch" },
-            { name: "Польша", code: "pl" }, { name: "Франция", code: "fr" }, { name: "Литва", code: "lt" },
-            { name: "Индия", code: "in" }, { name: "Турция", code: "tr" }, { name: "Швеция", code: "se" }
-        ];
-
-        const scrollTrack = document.getElementById('scrollTrack');
-        function buildChips() {
-            let html = '';
-            [...countryList, ...countryList].forEach(c => {
-                html += `<div class="country-chip">
-                            <span class="fi fi-${c.code}" style="width: 24px; height: 24px; border-radius: 50%; background-size: cover; background-position: center;"></span>
-                            <span>${c.name}</span>
-                         </div>`;
-            });
-            scrollTrack.innerHTML = html;
-        }
-        buildChips();
-
-        // ---------- ПЕРЕМЕННЫЕ ----------
-        let currentDevice = null;
-        let macosRegion = null;
-        let iphoneRegion = null;
-        let timerInterval = null;
-        let skipEnabled = false;
-        let timerValue = 8;
-
-        // Элементы модальных окон
-        const supportModal = document.getElementById('supportModal');
-        const deviceModal = document.getElementById('deviceModal');
-        const windowsInstallModal = document.getElementById('windowsInstallModal');
-        const windowsKeyModal = document.getElementById('windowsKeyModal');
-        const macosRegionModal = document.getElementById('macosRegionModal');
-        const macosInstallModal = document.getElementById('macosInstallModal');
-        const macosKeyModal = document.getElementById('macosKeyModal');
-        const iphoneRegionModal = document.getElementById('iphoneRegionModal');
-        const iphoneInstallModal = document.getElementById('iphoneInstallModal');
-        const iphoneKeyModal = document.getElementById('iphoneKeyModal');
-        const androidInstallModal = document.getElementById('androidInstallModal');
-        const androidKeyModal = document.getElementById('androidKeyModal');
-        const congratsModal = document.getElementById('congratsModal');
-        const aboutModal = document.getElementById('aboutModal');
-        const donateSelectModal = document.getElementById('donateSelectModal');
-        const addressModal = document.getElementById('addressModal');
-
-        const notification = document.getElementById('notification');
-        const timerSpan = document.getElementById('timer');
-        const skipBtn = document.getElementById('skipBtn');
-
-        // ---------- ФУНКЦИЯ УВЕДОМЛЕНИЯ ----------
-        function showNotification(message) {
-            notification.querySelector('i').className = 'fas fa-check-circle';
-            const existingSpan = notification.querySelector('span');
-            if (existingSpan) existingSpan.remove();
-            const textSpan = document.createElement('span');
-            textSpan.textContent = message || 'Скопировано!';
-            notification.appendChild(textSpan);
-            notification.classList.add('show');
-            setTimeout(() => notification.classList.remove('show'), 2000);
-        }
-
-        // ---------- ЗАКРЫТИЕ ВСЕХ МОДАЛОК ----------
-        function closeAllModals() {
-            const modals = [supportModal, deviceModal, windowsInstallModal, windowsKeyModal, 
-                macosRegionModal, macosInstallModal, macosKeyModal, iphoneRegionModal, 
-                iphoneInstallModal, iphoneKeyModal, androidInstallModal, androidKeyModal, 
-                congratsModal, aboutModal, donateSelectModal, addressModal];
-            modals.forEach(m => m?.classList.remove('active'));
-            if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-        }
-
-        // ---------- САЛЮТ (короткий, 2-3 залпа) ----------
-        function startFireworks() {
-            confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 }, colors: ['#4f46e5', '#a78bfa', '#c4b5fd', '#fbbf24'] });
-            setTimeout(() => { confetti({ particleCount: 100, spread: 70, origin: { y: 0.5, x: 0.3 }, colors: ['#22c55e', '#10b981', '#f59e0b'] }); }, 300);
-            setTimeout(() => { confetti({ particleCount: 100, spread: 70, origin: { y: 0.5, x: 0.7 }, colors: ['#ef4444', '#f97316', '#a78bfa'] }); }, 600);
-            setTimeout(() => { confetti({ particleCount: 120, spread: 80, origin: { y: 0.4 }, colors: ['#ffffff', '#c4b5fd', '#4f46e5'] }); }, 1000);
-        }
-
-        // ---------- ТАЙМЕР (8 -> 1, потом убирается цифра) ----------
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
-            
-            timerValue = 8;
-            skipEnabled = false;
-            skipBtn.classList.remove('active');
-            skipBtn.classList.add('skip-btn-inactive');
-            skipBtn.classList.remove('skip-btn-active');
-            skipBtn.style.cursor = 'not-allowed';
-            timerSpan.textContent = '8';
-            
-            function updateTimer() {
-                timerValue--;
-                
-                if (timerValue <= 0) {
-                    clearInterval(timerInterval);
-                    timerInterval = null;
-                    timerSpan.textContent = '';
-                    skipEnabled = true;
-                    skipBtn.classList.remove('skip-btn-inactive');
-                    skipBtn.classList.add('skip-btn-active');
-                    skipBtn.style.cursor = 'pointer';
-                    return;
-                }
-                
-                timerSpan.textContent = timerValue;
-            }
-            
-            timerInterval = setInterval(updateTimer, 1000);
-        }
-
-        // ---------- ОТКРЫТИЕ ПОДДЕРЖКИ ----------
-        const installBtn = document.getElementById('installBtn');
-        if (installBtn) {
-            installBtn.onclick = () => {
-                closeAllModals();
-                supportModal.classList.add('active');
-                startTimer();
-            };
-        }
-
-        // Кнопка "Продолжить установку"
-        if (skipBtn) {
-            skipBtn.onclick = () => {
-                if (skipEnabled) {
-                    supportModal.classList.remove('active');
-                    deviceModal.classList.add('active');
-                }
-            };
-        }
-
-        // Кнопка "Назад" в выборе устройства
-        const modalBackBtn = document.getElementById('modalBackBtn');
-        if (modalBackBtn) modalBackBtn.onclick = () => closeAllModals();
-
-        // Кнопки в пожертвованиях
-        const donateSelectBackBtn = document.getElementById('donateSelectBackBtn');
-        if (donateSelectBackBtn) donateSelectBackBtn.onclick = () => donateSelectModal.classList.remove('active');
-        
-        const addressBackBtn = document.getElementById('addressBackBtn');
-        if (addressBackBtn) addressBackBtn.onclick = () => addressModal.classList.remove('active');
-
-        // ---------- ВЫБОР УСТРОЙСТВА (только активные) ----------
-        document.querySelectorAll('.device-btn:not(.disabled)').forEach(btn => {
-            btn.onclick = () => {
-                currentDevice = btn.getAttribute('data-device');
-                deviceModal.classList.remove('active');
-                if (currentDevice === 'windows') windowsInstallModal.classList.add('active');
-                else if (currentDevice === 'macos') macosRegionModal.classList.add('active');
-                else if (currentDevice === 'iphone') iphoneRegionModal.classList.add('active');
-                else if (currentDevice === 'android') androidInstallModal.classList.add('active');
-            };
-        });
-
-        // ---------- WINDOWS ----------
-        const windowsDownloadBtn = document.getElementById('windowsDownloadBtn');
-        if (windowsDownloadBtn) windowsDownloadBtn.onclick = () => window.open('https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe', '_blank');
-        
-        const windowsNextBtn = document.getElementById('windowsNextBtn');
-        if (windowsNextBtn) windowsNextBtn.onclick = () => { windowsInstallModal.classList.remove("active"); window.open("https://MeraVPN.cc.cd/subs", "_blank"); };
-        
-        const windowsBackBtn = document.getElementById('windowsBackBtn');
-        if (windowsBackBtn) windowsBackBtn.onclick = () => { windowsInstallModal.classList.remove('active'); deviceModal.classList.add('active'); };
-        
-        const windowsFinishBtn = document.getElementById('windowsFinishBtn');
-        if (windowsFinishBtn) windowsFinishBtn.onclick = () => { windowsKeyModal.classList.remove('active'); congratsModal.classList.add('active'); startFireworks(); };
-        
-        const windowsKeyBackBtn = document.getElementById('windowsKeyBackBtn');
-        if (windowsKeyBackBtn) windowsKeyBackBtn.onclick = () => { windowsKeyModal.classList.remove('active'); windowsInstallModal.classList.add('active'); };
-        
-        const copyWindowsKey = document.getElementById('copyWindowsKey');
-        if (copyWindowsKey) copyWindowsKey.onclick = () => { navigator.clipboard.writeText(document.getElementById('windowsKeyText').innerText); showNotification('Ключ скопирован!'); };
-
-        // ---------- macOS ----------
-        const macosYesBtn = document.getElementById('macosYesBtn');
-        if (macosYesBtn) macosYesBtn.onclick = () => { macosRegion = 'ru'; macosRegionModal.classList.remove('active'); macosInstallModal.classList.add('active'); };
-        
-        const macosNoBtn = document.getElementById('macosNoBtn');
-        if (macosNoBtn) macosNoBtn.onclick = () => { macosRegion = 'us'; macosRegionModal.classList.remove('active'); macosInstallModal.classList.add('active'); };
-        
-        const macosRegionBackBtn = document.getElementById('macosRegionBackBtn');
-        if (macosRegionBackBtn) macosRegionBackBtn.onclick = () => { macosRegionModal.classList.remove('active'); deviceModal.classList.add('active'); };
-        
-        const macosDownloadBtn = document.getElementById('macosDownloadBtn');
-        if (macosDownloadBtn) {
-            macosDownloadBtn.onclick = () => { 
-                const url = macosRegion === 'ru' ? 'https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973' : 'https://apps.apple.com/us/app/happ-proxy-utility/id6504287215'; 
-                window.open(url, '_blank'); 
-            };
-        }
-        
-        const macosNextBtn = document.getElementById('macosNextBtn');
-        if (macosNextBtn) macosNextBtn.onclick = () => { macosInstallModal.classList.remove("active"); window.open("https://MeraVPN.cc.cd/subs", "_blank"); };
-        
-        const macosInstallBackBtn = document.getElementById('macosInstallBackBtn');
-        if (macosInstallBackBtn) macosInstallBackBtn.onclick = () => { macosInstallModal.classList.remove('active'); macosRegionModal.classList.add('active'); };
-        
-        const macosFinishBtn = document.getElementById('macosFinishBtn');
-        if (macosFinishBtn) macosFinishBtn.onclick = () => { macosKeyModal.classList.remove('active'); congratsModal.classList.add('active'); startFireworks(); };
-        
-        const macosKeyBackBtn = document.getElementById('macosKeyBackBtn');
-        if (macosKeyBackBtn) macosKeyBackBtn.onclick = () => { macosKeyModal.classList.remove('active'); macosInstallModal.classList.add('active'); };
-        
-        const copyMacosKey = document.getElementById('copyMacosKey');
-        if (copyMacosKey) copyMacosKey.onclick = () => { navigator.clipboard.writeText(document.getElementById('macosKeyText').innerText); showNotification('Ключ скопирован!'); };
-
-        // ---------- iPhone ----------
-        const iphoneYesBtn = document.getElementById('iphoneYesBtn');
-        if (iphoneYesBtn) iphoneYesBtn.onclick = () => { iphoneRegion = 'ru'; iphoneRegionModal.classList.remove('active'); iphoneInstallModal.classList.add('active'); };
-        
-        const iphoneNoBtn = document.getElementById('iphoneNoBtn');
-        if (iphoneNoBtn) iphoneNoBtn.onclick = () => { iphoneRegion = 'us'; iphoneRegionModal.classList.remove('active'); iphoneInstallModal.classList.add('active'); };
-        
-        const iphoneRegionBackBtn = document.getElementById('iphoneRegionBackBtn');
-        if (iphoneRegionBackBtn) iphoneRegionBackBtn.onclick = () => { iphoneRegionModal.classList.remove('active'); deviceModal.classList.add('active'); };
-        
-        const iphoneDownloadBtn = document.getElementById('iphoneDownloadBtn');
-        if (iphoneDownloadBtn) {
-            iphoneDownloadBtn.onclick = () => { 
-                const url = iphoneRegion === 'ru' ? 'https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6746188973' : 'https://apps.apple.com/us/app/happ-proxy-utility/id6504287215'; 
-                window.open(url, '_blank'); 
-            };
-        }
-        
-        const iphoneNextBtn = document.getElementById('iphoneNextBtn');
-        if (iphoneNextBtn) iphoneNextBtn.onclick = () => { iphoneInstallModal.classList.remove("active"); window.open("https://MeraVPN.cc.cd/subs", "_blank"); };
-        
-        const iphoneInstallBackBtn = document.getElementById('iphoneInstallBackBtn');
-        if (iphoneInstallBackBtn) iphoneInstallBackBtn.onclick = () => { iphoneInstallModal.classList.remove('active'); iphoneRegionModal.classList.add('active'); };
-        
-        const iphoneFinishBtn = document.getElementById('iphoneFinishBtn');
-        if (iphoneFinishBtn) iphoneFinishBtn.onclick = () => { iphoneKeyModal.classList.remove('active'); congratsModal.classList.add('active'); startFireworks(); };
-        
-        const iphoneKeyBackBtn = document.getElementById('iphoneKeyBackBtn');
-        if (iphoneKeyBackBtn) iphoneKeyBackBtn.onclick = () => { iphoneKeyModal.classList.remove('active'); iphoneInstallModal.classList.add('active'); };
-        
-        const copyIphoneKey = document.getElementById('copyIphoneKey');
-        if (copyIphoneKey) copyIphoneKey.onclick = () => { navigator.clipboard.writeText(document.getElementById('iphoneKeyText').innerText); showNotification('Ключ скопирован!'); };
-
-        // ---------- Android ----------
-        const androidPlayBtn = document.getElementById('androidPlayBtn');
-        if (androidPlayBtn) androidPlayBtn.onclick = () => window.open('https://play.google.com/store/apps/details?id=com.happproxy', '_blank');
-        
-        const androidGitBtn = document.getElementById('androidGitBtn');
-        if (androidGitBtn) androidGitBtn.onclick = () => window.open('https://github.com/Happ-proxy/happ-android/releases/latest/download/Happ.apk', '_blank');
-        
-        const androidNextBtn = document.getElementById('androidNextBtn');
-        if (androidNextBtn) androidNextBtn.onclick = () => { androidInstallModal.classList.remove("active"); window.open("https://MeraVPN.cc.cd/subs", "_blank"); };
-        
-        const androidBackBtn = document.getElementById('androidBackBtn');
-        if (androidBackBtn) androidBackBtn.onclick = () => { androidInstallModal.classList.remove('active'); deviceModal.classList.add('active'); };
-        
-        const androidFinishBtn = document.getElementById('androidFinishBtn');
-        if (androidFinishBtn) androidFinishBtn.onclick = () => { androidKeyModal.classList.remove('active'); congratsModal.classList.add('active'); startFireworks(); };
-        
-        const androidKeyBackBtn = document.getElementById('androidKeyBackBtn');
-        if (androidKeyBackBtn) androidKeyBackBtn.onclick = () => { androidKeyModal.classList.remove('active'); androidInstallModal.classList.add('active'); };
-        
-        const copyAndroidKey = document.getElementById('copyAndroidKey');
-        if (copyAndroidKey) copyAndroidKey.onclick = () => { navigator.clipboard.writeText(document.getElementById('androidKeyText').innerText); showNotification('Ключ скопирован!'); };
-
-        // ---------- ПОЗДРАВЛЕНИЕ ----------
-        const congratsTelegramBtn = document.getElementById('congratsTelegramBtn');
-        if (congratsTelegramBtn) {
-            congratsTelegramBtn.onclick = () => window.open('https://t.me/MeraVPN', '_blank');
-        }      
-
-      
-        const congratsDonateBtn = document.getElementById('congratsDonateBtn');
-        if (congratsDonateBtn) congratsDonateBtn.onclick = () => { congratsModal.classList.remove('active'); donateSelectModal.classList.add('active'); };
-        
-        const congratsCloseBtn = document.getElementById('congratsCloseBtn');
-        if (congratsCloseBtn) congratsCloseBtn.onclick = () => congratsModal.classList.remove('active');
-
-        // ---------- ВСЁ О НАС ----------
-        const aboutCreatorBtn = document.getElementById('aboutCreatorBtn');
-        if (aboutCreatorBtn) aboutCreatorBtn.onclick = () => aboutModal.classList.add('active');
-        
-        const goToCreatorBtn = document.getElementById('goToCreatorBtn');
-        if (goToCreatorBtn) goToCreatorBtn.onclick = () => window.open('https://github.com/meraws', '_blank');
-        
-        const aboutCloseBtn = document.getElementById('aboutCloseBtn');
-        if (aboutCloseBtn) aboutCloseBtn.onclick = () => aboutModal.classList.remove('active');
-
-        // ---------- ПОЖЕРТВОВАНИЯ ----------
-        const donateMainBtn = document.getElementById('donateMainBtn');
-        if (donateMainBtn) donateMainBtn.onclick = () => donateSelectModal.classList.add('active');
-        
-        const donateSupportBtn = document.getElementById('donateSupportBtn');
-        if (donateSupportBtn) donateSupportBtn.onclick = () => { supportModal.classList.remove('active'); donateSelectModal.classList.add('active'); };
-        
-        // ИСПРАВЛЕНО: ссылка на Telegram (рабочая)
-        const telegramSupportBtn = document.getElementById('telegramSupportBtn');
-        if (telegramSupportBtn) {
-            telegramSupportBtn.onclick = () => window.open('https://t.me/MeraVPN', '_blank');
-        }        
-
-
-        // Обработка кнопок выбора типа пожертвования
-        document.querySelectorAll('.donate-type-btn').forEach(btn => {
-            btn.onclick = () => {
-                const type = btn.getAttribute('data-type');
-                // ИСПРАВЛЕНО: CryptoBot и Telegram звёзды ведут на yandex.ru (рабочая ссылка)
-                if (type === 'cryptobot') window.open('https://t.me/send?start=IV0ucoV6DZCd', '_blank');
-                else if (type === 'stars') window.open('https://t.me/meravpn/174', '_blank');
-                else if (addresses[type]) { 
-                    donateSelectModal.classList.remove('active'); 
-                    const addressTextSpan = document.getElementById('addressText');
-                    if (addressTextSpan) addressTextSpan.innerText = addresses[type];
-                    addressModal.classList.add('active'); 
-                }
-            };
-        });
-        
-        const copyAddressBtn = document.getElementById('copyAddressBtn');
-        if (copyAddressBtn) {
-            copyAddressBtn.onclick = () => { 
-                const addressTextSpan = document.getElementById('addressText');
-                if (addressTextSpan) navigator.clipboard.writeText(addressTextSpan.innerText);
-                showNotification('Адрес скопирован!'); 
-            };
-        }
-
-        // ---------- ЗАКРЫТИЕ МОДАЛОК ПО КЛИКУ НА ОВЕРЛЕЙ ----------
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.onclick = (e) => {
-                if (e.target === overlay) overlay.classList.remove('active');
-            };
-        });
-
-        // ---------- АНИМАЦИЯ ПОЯВЛЕНИЯ ----------
-        const heroElements = document.querySelectorAll('.hero, .features-grid');
-        heroElements.forEach((el, i) => {
-            el.style.opacity = '0';
-            el.style.animation = `fadeInUp 0.6s ease forwards`;
-            el.style.animationDelay = `${i * 0.15}s`;
-            setTimeout(() => el.style.opacity = '1', 10);
-        });
-    });
-</script>
 </body>
 </html>
-
-
-
-
-<style>
-@media (max-width: 768px) {
-    .modal {
-        width: 95%;
-        max-width: 95%;
-        padding: 1.2rem;
-        max-height: 85vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    .device-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.7rem;
-        max-height: 50vh;
-        overflow-y: auto;
-    }
-    .device-btn { padding: 0.8rem 0.5rem; }
-    .device-btn i { font-size: 1.6rem; }
-    .modal-overlay { align-items: flex-start; padding-top: 10vh; }
-    .modal h2 { font-size: 1.4rem; }
-}
-@media (max-width: 480px) {
-    .device-grid { grid-template-columns: 1fr; max-height: 60vh; }
-    .device-btn { flex-direction: row; justify-content: center; gap: 0.8rem; }
-    .device-btn i { margin-bottom: 0; }
-    .donate-type-grid { grid-template-columns: 1fr; }
-    .modal-overlay { padding-top: 5vh; }
-}
-</style>
